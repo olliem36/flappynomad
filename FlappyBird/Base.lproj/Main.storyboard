@@ -18,9 +18,91 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <connections>
+                        <segue destination="ohG-hu-bdz" kind="presentation" identifier="EnterNameSegue" id="Luk-7H-4vX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="165" y="125"/>
+        </scene>
+        <!--New Name View Controller-->
+        <scene sceneID="0BQ-RQ-4p7">
+            <objects>
+                <viewController storyboardIdentifier="NewNameViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ohG-hu-bdz" customClass="NewNameViewController" customModule="FlappyBird" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OxG-xh-cai"/>
+                        <viewControllerLayoutGuide type="bottom" id="uib-rw-kLQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JUx-Il-Xde">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EmK-fn-rg8">
+                                <rect key="frame" x="119" y="127" width="243" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="242" id="zns-UU-4E3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMm-V4-92o">
+                                <rect key="frame" x="212" y="203" width="56" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="4qu-Pf-xw0"/>
+                                </constraints>
+                                <state key="normal" title="Send!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnEnterPressed:" destination="ohG-hu-bdz" eventType="touchUpInside" id="M4D-OJ-oHY"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Well Done!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elh-sX-KXH">
+                                <rect key="frame" x="156" y="20" width="168" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="168" id="1mf-wK-U27"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contact number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gBH-Cb-zdc">
+                                <rect key="frame" x="119" y="165" width="243" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="242" id="Fy0-WK-1Ex"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="send"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSi-oa-Nb7">
+                                <rect key="frame" x="156" y="41" width="168" height="78"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="69"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uib-rw-kLQ" firstAttribute="top" secondItem="EmK-fn-rg8" secondAttribute="bottom" constant="285" id="2WX-oz-iYG"/>
+                            <constraint firstItem="EmK-fn-rg8" firstAttribute="centerX" secondItem="KSi-oa-Nb7" secondAttribute="centerX" id="5FV-Dm-xMl"/>
+                            <constraint firstItem="elh-sX-KXH" firstAttribute="trailing" secondItem="KSi-oa-Nb7" secondAttribute="trailing" id="MfJ-i7-eeA"/>
+                            <constraint firstItem="EmK-fn-rg8" firstAttribute="top" secondItem="KSi-oa-Nb7" secondAttribute="bottom" constant="8" symbolic="YES" id="bph-02-uHC"/>
+                            <constraint firstItem="elh-sX-KXH" firstAttribute="leading" secondItem="KSi-oa-Nb7" secondAttribute="leading" id="e3t-RC-Qhr"/>
+                            <constraint firstItem="EmK-fn-rg8" firstAttribute="centerX" secondItem="JUx-Il-Xde" secondAttribute="centerX" id="i7D-Gb-j95"/>
+                            <constraint firstItem="elh-sX-KXH" firstAttribute="centerX" secondItem="iMm-V4-92o" secondAttribute="centerX" id="iJv-kP-VeL"/>
+                            <constraint firstItem="elh-sX-KXH" firstAttribute="top" secondItem="JUx-Il-Xde" secondAttribute="top" constant="20" symbolic="YES" id="uFd-uD-1gx"/>
+                            <constraint firstItem="iMm-V4-92o" firstAttribute="top" secondItem="gBH-Cb-zdc" secondAttribute="bottom" constant="8" id="vAs-3E-76N"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <connections>
+                        <outlet property="lblScore" destination="KSi-oa-Nb7" id="DYv-mz-uEa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aTy-XN-HdI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="718" y="141"/>
         </scene>
     </scenes>
 </document>

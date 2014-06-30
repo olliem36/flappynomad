@@ -25,7 +25,13 @@ extension SKNode {
 }
 
 class GameViewController: UIViewController {
-
+    
+    var enternameVC:NewNameViewController!
+    
+    func getNewScore() -> Int{
+        return 89;
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,6 +41,8 @@ class GameViewController: UIViewController {
             skView.showsFPS = true
             skView.showsNodeCount = true
             
+            scene.parentVC = self;
+            
             /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView.ignoresSiblingOrder = true
             
@@ -43,6 +51,24 @@ class GameViewController: UIViewController {
             
             skView.presentScene(scene)
         }
+    }
+    
+    func askUsername(score:Int){
+        
+        //self.performSegueWithIdentifier("EnterNameSegue", sender: self)
+        
+        let storyboard : UIStoryboard = self.storyboard;
+        self.enternameVC = storyboard.instantiateViewControllerWithIdentifier("NewNameViewController") as NewNameViewController;
+        self.enternameVC.score = score;
+        
+        self.presentViewController(self.enternameVC, animated: true, completion: { });
+        
+
+        
+        //var alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertControllerStyle.Alert)
+        //alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+        
+        //self.presentViewController(alert, animated: true, completion: nil)
     }
 
     override func shouldAutorotate() -> Bool {

@@ -22,6 +22,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var scoreLabelNode:SKLabelNode!
     var score = NSInteger()
     
+    var parentVC:GameViewController!
+    
     let birdCategory: UInt32 = 1 << 0
     let worldCategory: UInt32 = 1 << 1
     let pipeCategory: UInt32 = 1 << 2
@@ -109,7 +111,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         bird.setScale(2.0)
         bird.position = CGPoint(x: self.frame.size.width * 0.35, y:self.frame.size.height * 0.6)
         bird.runAction(flap)
-        
         
         bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.height / 2.0)
         bird.physicsBody.dynamic = true
@@ -211,12 +212,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 
                 bird.physicsBody.velocity = CGVectorMake(0, 0)
                 bird.physicsBody.applyImpulse(CGVectorMake(0.1, 23))
-                moving.speed = moving.speed+0.1;
+                
+                if(moving.speed < 3.6) { moving.speed = moving.speed+0.1 }
+                
+                NSLog("moving speed: %f", moving.speed)
                 
             }
         }else if canRestart {
+            
+            self.askForUsername()
+            // end of the game:
             self.resetScene()
         }
+    }
+    
+    func askForUsername(){
+        //var alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertControllerStyle.Alert)
+        //alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+        
+        //self.presentViewController(alert, animated: true, completion: nil)
     }
     
     // TODO: Move to utilities somewhere. There's no reason this should be a member function
@@ -252,6 +266,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 bird.physicsBody.collisionBitMask = worldCategory
                 bird.runAction(  SKAction.rotateByAngle(CGFloat(M_PI) * CGFloat(bird.position.y) * 0.01, duration:1), completion:{self.bird.speed = 0 })
                 
+                if(score > 0){
+                    self.parentVC.askUsername(score)
+                }
                 
                 // Flash background if contact is detected
                 self.removeActionForKey("flash")
