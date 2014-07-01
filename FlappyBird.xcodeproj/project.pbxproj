@@ -15,7 +15,11 @@
 		4374520B193D163800654986 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4374520A193D163800654986 /* Images.xcassets */; };
 		43745217193D163800654986 /* FlappyBirdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43745216193D163800654986 /* FlappyBirdTests.swift */; };
 		437A3DBA193D326A00909BA0 /* bird.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 437A3DB9193D326A00909BA0 /* bird.atlas */; };
+		D554B9781962F01000DA440F /* Ignite.png in Resources */ = {isa = PBXBuildFile; fileRef = D554B9771962F01000DA440F /* Ignite.png */; };
+		D569577719630285008E5025 /* awesome_nomad.png in Resources */ = {isa = PBXBuildFile; fileRef = D569577619630285008E5025 /* awesome_nomad.png */; };
+		D569577919631373008E5025 /* coolnomad.png in Resources */ = {isa = PBXBuildFile; fileRef = D569577819631373008E5025 /* coolnomad.png */; };
 		D5CEF3471961CE3500C28A77 /* NewNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CEF3461961CE3500C28A77 /* NewNameViewController.swift */; };
+		D5CEF3491962A7EE00C28A77 /* OJMLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CEF3481962A7EE00C28A77 /* OJMLoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +45,11 @@
 		43745215193D163800654986 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43745216193D163800654986 /* FlappyBirdTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyBirdTests.swift; sourceTree = "<group>"; };
 		437A3DB9193D326A00909BA0 /* bird.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bird.atlas; sourceTree = "<group>"; };
+		D554B9771962F01000DA440F /* Ignite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ignite.png; sourceTree = "<group>"; };
+		D569577619630285008E5025 /* awesome_nomad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = awesome_nomad.png; path = ../awesome_nomad.png; sourceTree = "<group>"; };
+		D569577819631373008E5025 /* coolnomad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coolnomad.png; sourceTree = "<group>"; };
 		D5CEF3461961CE3500C28A77 /* NewNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewNameViewController.swift; sourceTree = "<group>"; };
+		D5CEF3481962A7EE00C28A77 /* OJMLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OJMLoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +91,16 @@
 		437451FC193D163700654986 /* FlappyBird */ = {
 			isa = PBXGroup;
 			children = (
+				D569577819631373008E5025 /* coolnomad.png */,
+				D5CEF34A1962A7F400C28A77 /* Views */,
 				D5CEF3411961B08400C28A77 /* ViewControllers */,
 				437451FF193D163700654986 /* AppDelegate.swift */,
 				43745201193D163700654986 /* GameScene.sks */,
 				43745203193D163800654986 /* GameScene.swift */,
 				43745207193D163800654986 /* Main.storyboard */,
 				4374520A193D163800654986 /* Images.xcassets */,
+				D569577619630285008E5025 /* awesome_nomad.png */,
+				D554B9771962F01000DA440F /* Ignite.png */,
 				437A3DB9193D326A00909BA0 /* bird.atlas */,
 				437451FD193D163700654986 /* Supporting Files */,
 			);
@@ -127,6 +139,14 @@
 				D5CEF3461961CE3500C28A77 /* NewNameViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D5CEF34A1962A7F400C28A77 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D5CEF3481962A7EE00C28A77 /* OJMLoadingView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,9 +230,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4374520B193D163800654986 /* Images.xcassets in Resources */,
+				D569577919631373008E5025 /* coolnomad.png in Resources */,
 				43745202193D163700654986 /* GameScene.sks in Resources */,
+				D554B9781962F01000DA440F /* Ignite.png in Resources */,
 				437A3DBA193D326A00909BA0 /* bird.atlas in Resources */,
 				43745209193D163800654986 /* Main.storyboard in Resources */,
+				D569577719630285008E5025 /* awesome_nomad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43745204193D163800654986 /* GameScene.swift in Sources */,
+				D5CEF3491962A7EE00C28A77 /* OJMLoadingView.swift in Sources */,
 				43745206193D163800654986 /* GameViewController.swift in Sources */,
 				D5CEF3471961CE3500C28A77 /* NewNameViewController.swift in Sources */,
 				43745200193D163700654986 /* AppDelegate.swift in Sources */,

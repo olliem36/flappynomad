@@ -13,6 +13,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     var bird:SKSpriteNode!
     var skyColor:SKColor!
+    
+    var igniteLogoTexture:SKTexture!
+
     var pipeTextureUp:SKTexture!
     var pipeTextureDown:SKTexture!
     var movePipesAndRemove:SKAction!
@@ -20,6 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var pipes:SKNode!
     var canRestart = Bool()
     var scoreLabelNode:SKLabelNode!
+    var poweredByIgniteLabelNode:SKLabelNode!
     var score = NSInteger()
     
     var parentVC:GameViewController!
@@ -79,6 +83,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             moving.addChild(sprite)
         }
         
+        // insert the ignite logo
+        
+        igniteLogoTexture = SKTexture(imageNamed: "Ignite")
+        igniteLogoTexture.filteringMode = SKTextureFilteringMode.Nearest
+        let igniteLogo = SKSpriteNode(texture: igniteLogoTexture)
+        igniteLogo.setScale(0.8)
+        igniteLogo.position = CGPointMake(500.0, 50)
+        moving.addChild(igniteLogo)
+        
+        
         // create the pipes textures
         pipeTextureUp = SKTexture(imageNamed: "PipeUp")
         pipeTextureUp.filteringMode = SKTextureFilteringMode.Nearest
@@ -93,22 +107,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         // spawn the pipes
         let spawn = SKAction.runBlock({() in self.spawnPipes()})
-        let delay = SKAction.waitForDuration(NSTimeInterval(2.0))
+        let delay = SKAction.waitForDuration(2)
         let spawnThenDelay = SKAction.sequence([spawn, delay])
         let spawnThenDelayForever = SKAction.repeatActionForever(spawnThenDelay)
         self.runAction(spawnThenDelayForever)
         
         // setup our bird
-        let birdTexture1 = SKTexture(imageNamed: "bird-01")
+        let birdTexture1 = SKTexture(imageNamed: "coolnomad") // bird-01
         birdTexture1.filteringMode = SKTextureFilteringMode.Nearest
-        let birdTexture2 = SKTexture(imageNamed: "bird-02")
+        let birdTexture2 = SKTexture(imageNamed: "coolnomad") // bird-02
         birdTexture2.filteringMode = SKTextureFilteringMode.Nearest
         
         let anim = SKAction.animateWithTextures([birdTexture1, birdTexture2], timePerFrame: 0.2)
         let flap = SKAction.repeatActionForever(anim)
         
         bird = SKSpriteNode(texture: birdTexture1)
-        bird.setScale(2.0)
+        //bird.setScale(0.8)
         bird.position = CGPoint(x: self.frame.size.width * 0.35, y:self.frame.size.height * 0.6)
         bird.runAction(flap)
         
@@ -137,6 +151,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         scoreLabelNode.zPosition = 100
         scoreLabelNode.text = String(score)
         self.addChild(scoreLabelNode)
+        
+        //powered by Ignite label
+        poweredByIgniteLabelNode = SKLabelNode(fontNamed:"MarkerFelt-Wide")
+        poweredByIgniteLabelNode.position = CGPointMake( 500, 110)
+        poweredByIgniteLabelNode.zPosition = 100
+        poweredByIgniteLabelNode.text = String("Powered by: ")
+        self.addChild(poweredByIgniteLabelNode)
         
     }
     
@@ -201,7 +222,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         scoreLabelNode.text = String(score)
         
         // Restart animation
-        moving.speed = 1
+        moving.speed = 2
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -211,9 +232,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 let location = touch.locationInNode(self)
                 
                 bird.physicsBody.velocity = CGVectorMake(0, 0)
-                bird.physicsBody.applyImpulse(CGVectorMake(0.1, 23))
+                bird.physicsBody.applyImpulse(CGVectorMake(moving.speed / 10, (26 * 2))) //(0.1, 23) // moving.speed/10, 26
                 
-                if(moving.speed < 3.6) { moving.speed = moving.speed+0.1 }
+                //if(moving.speed < 3.6) { moving.speed = moving.speed+0.1 }
                 
                 NSLog("moving speed: %f", moving.speed)
                 
